@@ -11,7 +11,7 @@ class calculadora {
         this.e
         this.c
         this.multiplicacion = []
-        this.Nresultado=[]
+        this.Nresultado = []
         this.esponente = []
         this.dos = []
         this.numeros = []
@@ -19,28 +19,37 @@ class calculadora {
         this.Nexponentes
         this.Ndos
         this.Nnumeros
-        this.multipli=0
+        this.multipli = 0
+        this.numeroD = []
+        this.n
+        this.m
     }
     binarios() {
         this.a = this.numero.value
         this.binario.push(parseInt(this.a))
-        for(let i=0;i<this.a.length;i++){
+        for (let i = 0; i < this.a; i++) {
             this.d = this.binario[i] / 2
-            this.binario.push(this.d)
+            if(Math.floor(this.d) !== 0){
+                this.binario.push(this.d)
+            }
         }
-        for (let i = 0; i<this.binario.length; i++) {
+
+        let B = this.binario.filter(Boolean)
+
+        for (let i = 0; i < B.length; i++) {
             this.c = this.binario[i] % 2
-            this.resto.push(this.c)
+            this.resto.unshift(Math.floor(this.c))
         }
         this.resultado.value = this.resto.join('')
     }
+
     decimales() {
 
         this.b = this.numero.value
 
         for (let i = 0; i < this.b.length; i++) {
             this.Ndatos = this.b.substr([i], 1)
-            this.numeros.push(parseInt(this.Ndatos))
+            this.numeros.unshift(parseInt(this.Ndatos))
         }
 
         for (let i = 0; i < this.b.length; i++) {
@@ -58,14 +67,13 @@ class calculadora {
             this.Nresultado.push(this.Nnumeros)
         }
 
-        for(let i=0;i<this.dos.length;i++){
-            this.e=this.numeros[i]*this.Nresultado[i]
+        for (let i = 0; i < this.dos.length; i++) {
+            this.e = this.numeros[i] * this.Nresultado[i]
             this.multiplicacion.push(this.e)
         }
 
         for (let i = 0; i < this.multiplicacion.length; i++) {
-                this.multipli = this.multipli + this.multiplicacion[i]
-                console.log(this.multipli)
+            this.multipli = this.multipli + this.multiplicacion[i]
         }
         this.resultado.value = this.multipli
     }
